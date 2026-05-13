@@ -4,9 +4,15 @@
 #root {
   text-align: center;
   width: 100vw;
-  height: 100vh;
-  background-image: url("i.webp");
-  background-size: cover;
+  min-height: 100vh; /* min-height важен, чтобы фон тянулся вниз при добавлении задач */
+  
+  /* Подключаем картинку из папки public */
+  background-image: url('/2.jpg'); 
+  
+  background-size: cover; /* Картинка растянется на весь экран */
+  background-position: center; /* Центрируем картинку */
+  background-attachment: fixed; /* Фон не будет скроллиться вместе с задачами */
+  background-repeat: no-repeat;
 }
 .App {
   display: flex;
