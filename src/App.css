@@ -1,6 +1,3 @@
-.strike {
-    text-decoration: line-through;
-}
 #root {
   text-align: center;
   width: 100vw;
@@ -14,167 +11,115 @@
   background-attachment: fixed; /* Фон не будет скроллиться вместе с задачами */
   background-repeat: no-repeat;
 }
+
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Чтобы элементы начинались сверху, а не по центру экрана */
   min-height: 100vh;
+  padding-top: 50px; /* Отступ сверху, чтобы не прилипало к краю браузера */
 }
-/* Стили блока info */
-.info{
-  /* Используем гибкую разметку Flexbox для выравнивания элементов внутри контейнера */
+
+/* Стили блока info (контейнер для погоды и валюты) */
+.info {
   display: flex;
-  /* Горизонтальное выравнивание содержимого по центру */
   justify-content: center;
-  /* Высоту устанавливаем равной 100 пикселей */
-  height: 100px;
-  /* Выравнивание текущего элемента вертикально по центру родительского контейнера */
-  align-self: center;
-}
-
-/* Блок money */
-.money {
-  /* Цвет текста белый (#ffffff) */
-  color: #fff;
-  /* Обычная рамка вокруг элемента */
-  border: solid;
-  /* Скругляем углы рамки на 5 пикселей */
-  border-radius: 5px;
-  /* Элемент занимает 80% высоты родителя */
-  height: 80%;
-  /* Плавающий элемент слева строки */
-  float: inline-start;
-  /* Внутренний отступ сверху 2%, справа 1%, снизу 0% */
-  padding: 2% 1% 0%;
-}
-
-/* Информация о погоде */
-.weather-info {
-  /* Белый цвет текста */
-  color: #fff;
-  /* Рамка обычного типа */
-  border: solid;
-  /* Скругленные уголки рамки */
-  border-radius: 5px;
-  /* Высота блока составляет 80% от размера родителя */
-  height: 80%;
-  /* Позиционируем элемент плавающим справа строки */
-  float: inline-end;
-  /* Внешнее пространство внутри элемента: верх/снизу/слева/справа = 1% */
-  padding: 1%;
-}
-
-/* Оформление элемента todo */
-.item-todo {
-  /* Увеличим ширину, чтобы тексту и крестику не было тесно */
-  max-width: 60%;
-  width: 500px; /* Добавим фиксированную желаемую ширину */
-  margin: 15px auto;
-  padding: 14px 20px; /* Немного увеличим боковые отступы */
-  
-  /* Используем Flexbox для идеального выравнивания текста слева, а крестика справа */
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Чтобы на телефонах блоки переносились друг под друга */
+  gap: 20px; /* Расстояние между блоками валюты и погоды */
+  margin-bottom: 20px;
+}
 
-  text-align: left;
-  background: linear-gradient(90deg, rgba(93, 12, 255, 1) 0%, #2ea4db 100%);
+/* Блок money и Блок погоды (одинаковое оформление для красоты) */
+.money, .weather-info {
   color: #fff;
-  border-radius: 5px;
-}
-
-/* Стиль самого текста задачи (чтобы он не растягивался на крестик) */
-.item-todo .item-text {
-  cursor: pointer;
-  word-break: break-word; /* Если слово слишком длинное - переносить его */
-  flex-grow: 1; /* Текст занимает всё свободное место до крестика */
-  padding-right: 15px; /* Зазор между текстом и крестиком */
-}
-
-/* Иконка погоды */
-.weather-info .weather-icon {
-  /* Меняем тип курсора на 'руку' при наведении */
-  cursor: pointer;
-  /* Обтекаемый контент располагается справа */
-  float: right;
-  /* Размер шрифта устанавливается равным 22px */
-  font-size: 22px;
-  /* Позиция относительно текущего положения смещена вправо на -4px и вниз на 5px */
-  position: relative;
-  left: -4px;
-  bottom: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Полупрозрачная белая рамка */
+  border-radius: 8px;
+  padding: 15px 25px;
+  background: rgba(0, 0, 0, 0.6); /* Темная подложка, чтобы текст читался на любом фоне */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Легкая тень */
 }
 
 /* Заголовок списка */
 .list-header {
-  /* Цвет заголовка aliceblue (светло-голубой оттенок) */
   color: aliceblue;
-  /* Размер шрифта заголовка 20px */
-  size: 20px;
-  /* Расстояние сверху равно 1% */
-  padding-top: 1%;
+  font-size: 32px; /* Правильное свойство для размера шрифта */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8); /* Тень для читаемости на фоне */
+  margin-bottom: 20px;
 }
 
 /* Поле ввода */
 input {
-  /* Внутренние отступы поля ввода */
   padding: 14px 32px 14px 16px;
-  /* Округлые углы формы */
   border-radius: 4px 0 0 4px;
-  /* Толщина рамки 3px, цвет фиолетовый */
   border: 3px solid #5d0cff;
-  /* Убираем выделение при фокусировке */
   outline: none;
-  /* Белый фон */
   background: white;
+  font-size: 16px;
 }
 
 /* Кнопка */
 button {
-  /* Внутренние отступы кнопки */
-  padding: 16px 7px;
-  /* Нет границ */
+  padding: 16px 15px; /* Сделал кнопку чуть шире для красоты */
   border: none;
-  /* Углы скруглены */
   border-radius: 0 4px 4px 0;
-  /* Курсор меняет форму на 'руку' при наведении */
   cursor: pointer;
-  /* Удаляет подчеркивание и выделенный контур при клике */
   outline: none;
-  /* Градиент фона от тёмно-фиолетового к светло-синему цвету */
-  background: linear-gradient(
-    90deg,
-    rgba(93, 12, 255, 1) 0%,
-    #2ea4db 100%
-  );
-  /* Белые буквы */
+  background: linear-gradient(90deg, rgba(93, 12, 255, 1) 0%, #2ea4db 100%);
   color: #fff;
-  /* Первая буква каждого слова пишется заглавной */
-  text-transform: capitalize;
+  text-transform: uppercase; /* Лучше смотрится uppercase, чем capitalize */
+  font-weight: bold;
+  font-size: 14px;
+  transition: opacity 0.2s; /* Плавность при наведении */
 }
 
-/* Иконка удаления */
+button:hover {
+  opacity: 0.9; /* При наведении кнопка немного светлеет */
+}
+
+/* Оформление элемента todo (родительский блок задачи) */
+.item-todo {
+  width: 500px; /* Фиксированная ширина */
+  max-width: 90vw; /* Защита для узких экранов телефонов */
+  margin: 15px auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  background: linear-gradient(90deg, rgba(93, 12, 255, 1) 0%, #2ea4db 100%);
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Стиль самого текста задачи */
+.item-todo .item-text {
+  cursor: pointer;
+  word-break: break-word; 
+  flex-grow: 1; 
+  padding-right: 15px; 
+  font-size: 18px;
+}
+
+/* Иконка удаления (крестик) */
 .item-todo .item-delete {
   cursor: pointer;
-  font-size: 22px;
-  font-weight: bold; /* Сделаем крестик чуть толще */
-  color: #ff4d4d; /* Сделаем крестик красноватым, чтобы было видно, что это удаление */
-  transition: transform 0.2s; /* Плавная анимация при наведении */
-  
-  /* Убираем старое позиционирование, так как теперь Flexbox всё делает сам */
-  float: none;
-  position: static;
+  font-size: 24px;
+  font-weight: bold; 
+  color: #ffb3b3; /* Чуть более мягкий красный цвет */
+  transition: transform 0.2s, color 0.2s; 
 }
 
 /* Эффект при наведении на крестик */
 .item-todo .item-delete:hover {
-  transform: scale(1.2); /* При наведении крестик будет слегка увеличиваться */
+  transform: scale(1.3); 
+  color: #ff4d4d; /* При наведении становится ярко-красным */
 }
 
 /* Класс strike применяется к зачёркнутому тексту */
 .strike {
-  /* Добавляется зачёркивание текста */
-  text-decoration: line-through;
+  text-decoration: line-through !important; /* !important гарантирует зачеркивание */
+  opacity: 0.6; /* Завершенные задачи будут немного бледнее */
 }
-
